@@ -8,7 +8,6 @@ const Landing = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { lastRead } = useSelector((state) => state.quran);
-  const [isDark, setIsDark] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
 
   useEffect(() => {
@@ -16,10 +15,6 @@ const Landing = () => {
     dispatch(loadLastRead());
     dispatch(loadBookmarks());
     dispatch(loadFavoriteAyat());
-
-    // Check dark mode preference
-    const savedTheme = localStorage.getItem('theme');
-    setIsDark(savedTheme === 'dark');
   }, [dispatch]);
 
   const handleLastRead = () => {
@@ -45,7 +40,7 @@ const Landing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center p-3 sm:p-4 transition-colors duration-300">
+    <div className="min-h-screen bg-linear-to-br from-emerald-50 via-white to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center p-3 sm:p-4 transition-colors duration-300">
       {/* CONTAINER */}
       <div className="text-center max-w-md w-full">
         {/* LOGO / TITLE */}
@@ -70,7 +65,7 @@ const Landing = () => {
         <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
           {/* LAST READ CARD */}
           {lastRead && (
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border-2 border-blue-200 dark:border-blue-700 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-4 sm:mb-6 animate-pulse">
+            <div className="bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border-2 border-blue-200 dark:border-blue-700 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-4 sm:mb-6 animate-pulse">
               <p className="text-xs text-blue-600 dark:text-blue-300 font-semibold uppercase tracking-wide mb-2 flex items-center gap-2">
                 <FaMapMarker className="text-sm" /> Terakhir dibaca
               </p>
